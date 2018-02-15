@@ -76,7 +76,7 @@ function calcMatrix() {
             det = new Frac(0);
             break;
         } 
-        else {
+        else if(si !== shift) {
             const t = matrix[si];
             matrix[si] = matrix[shift];
             matrix[shift] = matrix[si];
@@ -95,6 +95,9 @@ function calcMatrix() {
         for(let i = 0; i < rows; i++) det.mult(matrix[i][i]);
         if(neg) det.q = -det.q;
     }
+
+    console.log(matrix);
+    console.log(neg);
 
     MathJax.Hub.queue.Push(["Text", resultMatrix, toLatex(originalMatrix) + "=" + det.toLatex()]);	
 }
